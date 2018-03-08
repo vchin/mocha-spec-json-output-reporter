@@ -25,6 +25,6 @@ workflows:
   work-it:
     jobs:
       - lint
-      - test
+      - test:
           requires:
             - lint
