@@ -18,7 +18,8 @@ jobs:
       - run:
           command: |
             npm install
-            npm run sample-test || 0
+            set +e
+            npm run sample-test
             npm test
 workflows:
   version: 2
