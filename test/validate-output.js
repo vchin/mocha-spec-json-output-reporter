@@ -48,7 +48,7 @@ describe('reporter', function() {
             "fullTitle": "suite 1 test fail",
             "currentRetry": 0,
             "err": {
-              "stack": "AssertionError [ERR_ASSERTION]: null == true\n    at Context.it (test\\test.js:16:32)",
+              "stack": `AssertionError [ERR_ASSERTION]: null == true\n    at Context.it (${path.join('test','test.js')}:16:32)`,
               "message": "null == true",
               "generatedMessage": true,
               "name": "AssertionError [ERR_ASSERTION]",
@@ -74,7 +74,7 @@ describe('reporter', function() {
             "fullTitle": "suite 1 nested describe nested test fail",
             "currentRetry": 0,
             "err": {
-              "stack": "AssertionError [ERR_ASSERTION]: null == true\n    at Context.it (test\\test.js:21:41)",
+              "stack": `AssertionError [ERR_ASSERTION]: null == true\n    at Context.it (${path.join('test','test.js')}:21:41)`,
               "message": "null == true",
               "generatedMessage": true,
               "name": "AssertionError [ERR_ASSERTION]",
@@ -110,7 +110,7 @@ describe('reporter', function() {
         "fullTitle": "suite 1 test fail",
         "currentRetry": 0,
         "err": {
-          "stack": "AssertionError [ERR_ASSERTION]: null == true\n    at Context.it (test\\test.js:16:32)",
+          "stack": `AssertionError [ERR_ASSERTION]: null == true\n    at Context.it (${path.join('test','test.js')}:16:32)`,
           "message": "null == true",
           "generatedMessage": true,
           "name": "AssertionError [ERR_ASSERTION]",
@@ -125,7 +125,7 @@ describe('reporter', function() {
         "fullTitle": "suite 1 nested describe nested test fail",
         "currentRetry": 0,
         "err": {
-          "stack": "AssertionError [ERR_ASSERTION]: null == true\n    at Context.it (test\\test.js:21:41)",
+          "stack": `AssertionError [ERR_ASSERTION]: null == true\n    at Context.it (${path.join('test','test.js')}:21:41)`,
           "message": "null == true",
           "generatedMessage": true,
           "name": "AssertionError [ERR_ASSERTION]",
