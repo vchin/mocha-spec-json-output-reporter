@@ -12,13 +12,14 @@ jobs:
             npm run lint
   test:
     docker:
-      - image: circleci/node:6.13
+      - image: circleci/node:8.9.4
     steps:
       - checkout
       - run:
           command: |
             npm install
-            npm run sample-test || 0
+            set +e
+            npm run sample-test
             npm test
 workflows:
   version: 2
@@ -26,5 +27,3 @@ workflows:
     jobs:
       - lint
       - test
-          requires:
-            - lint
