@@ -1,23 +1,24 @@
 {
   "name": "mocha-spec-json-output-reporter",
-  "version": "1.0.1",
-  "description": "default mocha spec reporter + default mocha json reporter output file",
-  "main": "reporter.js",
+  "description": "mocha spec + json output file reporter",
   "scripts": {
-    "lint": "eslint reporter.js"
+    "sample-test": "mocha test/test.js -R mocha-spec-json-output-reporter --reporter-options fileName=mocha-output.json",
+    "test": "mocha test/validate-output.js",
+    "publish": "npm publish lib"
   },
-  "author": "vchin",
   "repository": {
     "type": "git",
-    "url": "https://github.com/vchin/mocha-spec-json-output-reporter"
+    "url": "git+https://github.com/vchin/mocha-spec-json-output-reporter.git"
   },
+  "author": "vchin",
   "license": "MIT",
-  "dependencies": {
-    "mocha": "^5.0.2",
-    "moment": "^2.21.0"
+  "bugs": {
+    "url": "https://github.com/vchin/mocha-spec-json-output-reporter/issues"
   },
+  "homepage": "https://github.com/vchin/mocha-spec-json-output-reporter#readme",
   "devDependencies": {
-    "eslint": "^4.18.2",
-    "eslint-config-google": "^0.9.1"
+    "chai": "^4.1.2",
+    "mocha": "^5.0.4",
+    "mocha-spec-json-output-reporter": "file:./lib"
   }
 }

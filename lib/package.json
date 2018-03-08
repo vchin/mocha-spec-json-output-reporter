@@ -1,0 +1,23 @@
+{
+  "name": "mocha-spec-json-output-reporter",
+  "version": "1.0.1",
+  "description": "default mocha spec reporter + default mocha json reporter output file",
+  "main": "reporter.js",
+  "scripts": {
+    "lint": "eslint reporter.js"
+  },
+  "author": "vchin",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vchin/mocha-spec-json-output-reporter"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "mocha": "^5.0.2",
+    "moment": "^2.21.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.18.2",
+    "eslint-config-google": "^0.9.1"
+  }
+}
