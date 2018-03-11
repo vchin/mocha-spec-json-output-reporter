@@ -3,6 +3,7 @@
   "description": "mocha spec + json output file reporter",
   "scripts": {
     "sample-test": "mocha test/test.js -R mocha-spec-json-output-reporter --reporter-options fileName=mocha-output.json",
+    "sample-test2": "mocha test/test.js -R mocha-spec-json-output-reporter --reporter-options fileName=mocha-output.json,hierarchy=true",
     "test": "mocha test/validate-output.js",
     "publish": "npm publish lib"
   },

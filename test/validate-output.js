@@ -39,14 +39,10 @@ describe('reporter', function() {
         "tests": [
           {
             "title": "test pass",
-            "fullTitle": "suite 1 test pass",
-            "currentRetry": 0,
             "err": {}
           },
           {
             "title": "test fail",
-            "fullTitle": "suite 1 test fail",
-            "currentRetry": 0,
             "err": {
               "stack": `AssertionError [ERR_ASSERTION]: null == true\n    at Context.it (${path.join('test','test.js')}:16:32)`,
               "message": "null == true",
@@ -65,14 +61,10 @@ describe('reporter', function() {
         "tests": [
           {
             "title": "nested test pass",
-            "fullTitle": "suite 1 nested describe nested test pass",
-            "currentRetry": 0,
             "err": {}
           },
           {
             "title": "nested test fail",
-            "fullTitle": "suite 1 nested describe nested test fail",
-            "currentRetry": 0,
             "err": {
               "stack": `AssertionError [ERR_ASSERTION]: null == true\n    at Context.it (${path.join('test','test.js')}:21:41)`,
               "message": "null == true",
@@ -91,8 +83,6 @@ describe('reporter', function() {
         "tests": [
           {
             "title": "suite2 pass",
-            "fullTitle": "suite 2 suite2 pass",
-            "currentRetry": 0,
             "err": {}
           }
         ]
@@ -107,8 +97,6 @@ describe('reporter', function() {
     assert.deepEqual(failures, [
       {
         "title": "test fail",
-        "fullTitle": "suite 1 test fail",
-        "currentRetry": 0,
         "err": {
           "stack": `AssertionError [ERR_ASSERTION]: null == true\n    at Context.it (${path.join('test','test.js')}:16:32)`,
           "message": "null == true",
@@ -122,8 +110,6 @@ describe('reporter', function() {
       },
       {
         "title": "nested test fail",
-        "fullTitle": "suite 1 nested describe nested test fail",
-        "currentRetry": 0,
         "err": {
           "stack": `AssertionError [ERR_ASSERTION]: null == true\n    at Context.it (${path.join('test','test.js')}:21:41)`,
           "message": "null == true",
@@ -144,20 +130,14 @@ describe('reporter', function() {
     assert.deepEqual(passes, [
       {
         "title": "test pass",
-        "fullTitle": "suite 1 test pass",
-        "currentRetry": 0,
         "err": {}
       },
       {
         "title": "nested test pass",
-        "fullTitle": "suite 1 nested describe nested test pass",
-        "currentRetry": 0,
         "err": {}
       },
       {
         "title": "suite2 pass",
-        "fullTitle": "suite 2 suite2 pass",
-        "currentRetry": 0,
         "err": {}
       }
     ])
