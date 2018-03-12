@@ -2,9 +2,9 @@ const assert = require('chai').assert;
 const fs = require('fs');
 const path = require('path');
 
-const outputFile = path.join(process.cwd(), 'mocha-output.json');
+const outputFile = path.join(process.cwd(), 'mocha-output-hierarchy.json');
 
-describe('reporter - no hierarchy mode', function() {
+describe('reporter - hierarchy mode', function() {
   this.timeout(10000);
 
   it('reporter outputs json file', () => {
@@ -25,14 +25,18 @@ describe('reporter - no hierarchy mode', function() {
       "pending": 0,
       "failures": 2
     });
-    const suites = contents.suites.map(s => {
-      return Object.assign(s, {
-        tests: s.tests.map(t => {
+    const removeDurations = suite => {
+      if (suite.suites && suite.suites.length > 0) {
+        suite.suites.map(removeDurations);
+      }
+      return Object.assign(suite, {
+        tests: suite.tests.map(t => {
           delete t.duration;
           return t;
         })
-      })
-    });
+      });
+    };
+    const suites = contents.suites.map(removeDurations);
     assert.deepEqual(suites, [
       {
         "title": "suite 1",
@@ -54,27 +58,30 @@ describe('reporter - no hierarchy mode', function() {
               "operator": "=="
             }
           }
-        ]
-      },
-      {
-        "title": "nested describe",
-        "tests": [
+        ],
+        "suites": [
           {
-            "title": "nested test pass",
-            "err": {}
-          },
-          {
-            "title": "nested test fail",
-            "err": {
-              "stack": `AssertionError [ERR_ASSERTION]: null == true\n    at Context.it (${path.join('test','sample-test.js')}:13:41)`,
-              "message": "null == true",
-              "generatedMessage": true,
-              "name": "AssertionError [ERR_ASSERTION]",
-              "code": "ERR_ASSERTION",
-              "actual": null,
-              "expected": true,
-              "operator": "=="
-            }
+            "title": "nested describe",
+            "tests": [
+              {
+                "title": "nested test pass",
+                "err": {}
+              },
+              {
+                "title": "nested test fail",
+                "err": {
+                  "stack": `AssertionError [ERR_ASSERTION]: null == true\n    at Context.it (${path.join('test','sample-test.js')}:13:41)`,
+                  "message": "null == true",
+                  "generatedMessage": true,
+                  "name": "AssertionError [ERR_ASSERTION]",
+                  "code": "ERR_ASSERTION",
+                  "actual": null,
+                  "expected": true,
+                  "operator": "=="
+                }
+              }
+            ],
+            "suites": []
           }
         ]
       },
@@ -85,7 +92,8 @@ describe('reporter - no hierarchy mode', function() {
             "title": "suite2 pass",
             "err": {}
           }
-        ]
+        ],
+        "suites": []
       }
     ]);
 

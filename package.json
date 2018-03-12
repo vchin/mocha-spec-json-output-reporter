@@ -2,8 +2,9 @@
   "name": "mocha-spec-json-output-reporter",
   "description": "mocha spec + json output file reporter",
   "scripts": {
-    "sample-test": "mocha test/test.js -R mocha-spec-json-output-reporter --reporter-options fileName=mocha-output.json",
-    "test": "mocha test/validate-output.js",
+    "sample-test": "mocha test/sample-test.js -R mocha-spec-json-output-reporter --reporter-options fileName=mocha-output.json",
+    "sample-test-hierarchy": "mocha test/sample-test.js -R mocha-spec-json-output-reporter --reporter-options fileName=mocha-output-hierarchy.json,hierarchy=true",
+    "test": "mocha test/validate-output*.js",
     "publish": "npm publish lib"
   },
   "repository": {
