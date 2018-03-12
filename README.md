@@ -30,13 +30,13 @@ mocha --reporter-options fileName=my-file.json,filePath=/mydirectory/subfolder,h
 {
   "stats": {
     "suites": 3,
-    "tests": 5,
+    "tests": 6,
     "passes": 3,
-    "pending": 0,
+    "pending": 1,
     "failures": 2,
-    "start": "2018-03-12T20:19:42.224Z",
-    "end": "2018-03-12T20:19:42.237Z",
-    "duration": 13
+    "start": "2018-03-12T21:38:41.618Z",
+    "end": "2018-03-12T21:38:41.634Z",
+    "duration": 16
   },
   "suites": [
     {
@@ -45,13 +45,15 @@ mocha --reporter-options fileName=my-file.json,filePath=/mydirectory/subfolder,h
         {
           "title": "test pass",
           "duration": 0,
+          "result": "passed",
           "err": {}
         },
         {
           "title": "test fail",
-          "duration": 1,
+          "duration": 0,
+          "result": "failed",
           "err": {
-            "stack": "AssertionError [ERR_ASSERTION]: null == true\n    at Context.it (test\\sample-test.js:8:32)",
+            "stack": "AssertionError [ERR_ASSERTION]: null == true\n    at Context.it (test\\sample-test.js:7:32)",
             "message": "null == true",
             "generatedMessage": true,
             "name": "AssertionError [ERR_ASSERTION]",
@@ -60,6 +62,11 @@ mocha --reporter-options fileName=my-file.json,filePath=/mydirectory/subfolder,h
             "expected": true,
             "operator": "=="
           }
+        },
+        {
+          "title": "skipped test",
+          "result": "pending",
+          "err": {}
         }
       ]
     },
@@ -69,13 +76,15 @@ mocha --reporter-options fileName=my-file.json,filePath=/mydirectory/subfolder,h
         {
           "title": "nested test pass",
           "duration": 0,
+          "result": "passed",
           "err": {}
         },
         {
           "title": "nested test fail",
           "duration": 0,
+          "result": "failed",
           "err": {
-            "stack": "AssertionError [ERR_ASSERTION]: null == true\n    at Context.it (test\\sample-test.js:13:41)",
+            "stack": "AssertionError [ERR_ASSERTION]: null == true\n    at Context.it (test\\sample-test.js:11:41)",
             "message": "null == true",
             "generatedMessage": true,
             "name": "AssertionError [ERR_ASSERTION]",
@@ -93,18 +102,26 @@ mocha --reporter-options fileName=my-file.json,filePath=/mydirectory/subfolder,h
         {
           "title": "suite2 pass",
           "duration": 0,
+          "result": "passed",
           "err": {}
         }
       ]
     }
   ],
-  "pending": [],
+  "pending": [
+    {
+      "title": "skipped test",
+      "result": "pending",
+      "err": {}
+    }
+  ],
   "failures": [
     {
       "title": "test fail",
-      "duration": 1,
+      "duration": 0,
+      "result": "failed",
       "err": {
-        "stack": "AssertionError [ERR_ASSERTION]: null == true\n    at Context.it (test\\sample-test.js:8:32)",
+        "stack": "AssertionError [ERR_ASSERTION]: null == true\n    at Context.it (test\\sample-test.js:7:32)",
         "message": "null == true",
         "generatedMessage": true,
         "name": "AssertionError [ERR_ASSERTION]",
@@ -117,8 +134,9 @@ mocha --reporter-options fileName=my-file.json,filePath=/mydirectory/subfolder,h
     {
       "title": "nested test fail",
       "duration": 0,
+      "result": "failed",
       "err": {
-        "stack": "AssertionError [ERR_ASSERTION]: null == true\n    at Context.it (test\\sample-test.js:13:41)",
+        "stack": "AssertionError [ERR_ASSERTION]: null == true\n    at Context.it (test\\sample-test.js:11:41)",
         "message": "null == true",
         "generatedMessage": true,
         "name": "AssertionError [ERR_ASSERTION]",
@@ -133,16 +151,19 @@ mocha --reporter-options fileName=my-file.json,filePath=/mydirectory/subfolder,h
     {
       "title": "test pass",
       "duration": 0,
+      "result": "passed",
       "err": {}
     },
     {
       "title": "nested test pass",
       "duration": 0,
+      "result": "passed",
       "err": {}
     },
     {
       "title": "suite2 pass",
       "duration": 0,
+      "result": "passed",
       "err": {}
     }
   ]
@@ -154,13 +175,13 @@ mocha --reporter-options fileName=my-file.json,filePath=/mydirectory/subfolder,h
 {
   "stats": {
     "suites": 3,
-    "tests": 5,
+    "tests": 6,
     "passes": 3,
-    "pending": 0,
+    "pending": 1,
     "failures": 2,
-    "start": "2018-03-12T20:19:46.144Z",
-    "end": "2018-03-12T20:19:46.158Z",
-    "duration": 14
+    "start": "2018-03-12T21:39:37.802Z",
+    "end": "2018-03-12T21:39:37.817Z",
+    "duration": 15
   },
   "suites": [
     {
@@ -169,13 +190,15 @@ mocha --reporter-options fileName=my-file.json,filePath=/mydirectory/subfolder,h
         {
           "title": "test pass",
           "duration": 0,
+          "result": "passed",
           "err": {}
         },
         {
           "title": "test fail",
-          "duration": 1,
+          "duration": 2,
+          "result": "failed",
           "err": {
-            "stack": "AssertionError [ERR_ASSERTION]: null == true\n    at Context.it (test\\sample-test.js:8:32)",
+            "stack": "AssertionError [ERR_ASSERTION]: null == true\n    at Context.it (test\\sample-test.js:7:32)",
             "message": "null == true",
             "generatedMessage": true,
             "name": "AssertionError [ERR_ASSERTION]",
@@ -184,6 +207,11 @@ mocha --reporter-options fileName=my-file.json,filePath=/mydirectory/subfolder,h
             "expected": true,
             "operator": "=="
           }
+        },
+        {
+          "title": "skipped test",
+          "result": "pending",
+          "err": {}
         }
       ],
       "suites": [
@@ -193,13 +221,15 @@ mocha --reporter-options fileName=my-file.json,filePath=/mydirectory/subfolder,h
             {
               "title": "nested test pass",
               "duration": 0,
+              "result": "passed",
               "err": {}
             },
             {
               "title": "nested test fail",
               "duration": 0,
+              "result": "failed",
               "err": {
-                "stack": "AssertionError [ERR_ASSERTION]: null == true\n    at Context.it (test\\sample-test.js:13:41)",
+                "stack": "AssertionError [ERR_ASSERTION]: null == true\n    at Context.it (test\\sample-test.js:11:41)",
                 "message": "null == true",
                 "generatedMessage": true,
                 "name": "AssertionError [ERR_ASSERTION]",
@@ -220,19 +250,27 @@ mocha --reporter-options fileName=my-file.json,filePath=/mydirectory/subfolder,h
         {
           "title": "suite2 pass",
           "duration": 0,
+          "result": "passed",
           "err": {}
         }
       ],
       "suites": []
     }
   ],
-  "pending": [],
+  "pending": [
+    {
+      "title": "skipped test",
+      "result": "pending",
+      "err": {}
+    }
+  ],
   "failures": [
     {
       "title": "test fail",
-      "duration": 1,
+      "duration": 2,
+      "result": "failed",
       "err": {
-        "stack": "AssertionError [ERR_ASSERTION]: null == true\n    at Context.it (test\\sample-test.js:8:32)",
+        "stack": "AssertionError [ERR_ASSERTION]: null == true\n    at Context.it (test\\sample-test.js:7:32)",
         "message": "null == true",
         "generatedMessage": true,
         "name": "AssertionError [ERR_ASSERTION]",
@@ -245,8 +283,9 @@ mocha --reporter-options fileName=my-file.json,filePath=/mydirectory/subfolder,h
     {
       "title": "nested test fail",
       "duration": 0,
+      "result": "failed",
       "err": {
-        "stack": "AssertionError [ERR_ASSERTION]: null == true\n    at Context.it (test\\sample-test.js:13:41)",
+        "stack": "AssertionError [ERR_ASSERTION]: null == true\n    at Context.it (test\\sample-test.js:11:41)",
         "message": "null == true",
         "generatedMessage": true,
         "name": "AssertionError [ERR_ASSERTION]",
@@ -261,16 +300,19 @@ mocha --reporter-options fileName=my-file.json,filePath=/mydirectory/subfolder,h
     {
       "title": "test pass",
       "duration": 0,
+      "result": "passed",
       "err": {}
     },
     {
       "title": "nested test pass",
       "duration": 0,
+      "result": "passed",
       "err": {}
     },
     {
       "title": "suite2 pass",
       "duration": 0,
+      "result": "passed",
       "err": {}
     }
   ]

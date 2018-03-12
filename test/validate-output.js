@@ -20,9 +20,9 @@ describe('reporter - no hierarchy mode', function() {
     delete stats.duration;
     assert.deepEqual(stats, {
       "suites": 3,
-      "tests": 5,
+      "tests": 6,
       "passes": 3,
-      "pending": 0,
+      "pending": 1,
       "failures": 2
     });
     const suites = contents.suites.map(s => {
@@ -39,12 +39,14 @@ describe('reporter - no hierarchy mode', function() {
         "tests": [
           {
             "title": "test pass",
+            "result": "passed",
             "err": {}
           },
           {
             "title": "test fail",
+            "result": "failed",
             "err": {
-              "stack": `AssertionError [ERR_ASSERTION]: null == true\n    at Context.it (${path.join('test','sample-test.js')}:8:32)`,
+              "stack": `AssertionError [ERR_ASSERTION]: null == true\n    at Context.it (${path.join('test','sample-test.js')}:7:32)`,
               "message": "null == true",
               "generatedMessage": true,
               "name": "AssertionError [ERR_ASSERTION]",
@@ -53,6 +55,11 @@ describe('reporter - no hierarchy mode', function() {
               "expected": true,
               "operator": "=="
             }
+          },
+          {
+            "title": "skipped test",
+            "result": "pending",
+            "err": {}
           }
         ]
       },
@@ -61,12 +68,14 @@ describe('reporter - no hierarchy mode', function() {
         "tests": [
           {
             "title": "nested test pass",
+            "result": "passed",
             "err": {}
           },
           {
             "title": "nested test fail",
+            "result": "failed",
             "err": {
-              "stack": `AssertionError [ERR_ASSERTION]: null == true\n    at Context.it (${path.join('test','sample-test.js')}:13:41)`,
+              "stack": `AssertionError [ERR_ASSERTION]: null == true\n    at Context.it (${path.join('test','sample-test.js')}:11:41)`,
               "message": "null == true",
               "generatedMessage": true,
               "name": "AssertionError [ERR_ASSERTION]",
@@ -83,13 +92,17 @@ describe('reporter - no hierarchy mode', function() {
         "tests": [
           {
             "title": "suite2 pass",
+            "result": "passed",
             "err": {}
           }
         ]
       }
     ]);
-
-    assert.deepEqual(contents.pending, []);
+    assert.deepEqual(contents.pending, [{
+      "err": {},
+      "result": "pending",
+      "title": "skipped test"
+    }]);
     const failures = contents.failures.map(f => {
       delete f.duration;
       return f;
@@ -97,8 +110,9 @@ describe('reporter - no hierarchy mode', function() {
     assert.deepEqual(failures, [
       {
         "title": "test fail",
+        "result": "failed",
         "err": {
-          "stack": `AssertionError [ERR_ASSERTION]: null == true\n    at Context.it (${path.join('test','sample-test.js')}:8:32)`,
+          "stack": `AssertionError [ERR_ASSERTION]: null == true\n    at Context.it (${path.join('test','sample-test.js')}:7:32)`,
           "message": "null == true",
           "generatedMessage": true,
           "name": "AssertionError [ERR_ASSERTION]",
@@ -110,8 +124,9 @@ describe('reporter - no hierarchy mode', function() {
       },
       {
         "title": "nested test fail",
+        "result": "failed",
         "err": {
-          "stack": `AssertionError [ERR_ASSERTION]: null == true\n    at Context.it (${path.join('test','sample-test.js')}:13:41)`,
+          "stack": `AssertionError [ERR_ASSERTION]: null == true\n    at Context.it (${path.join('test','sample-test.js')}:11:41)`,
           "message": "null == true",
           "generatedMessage": true,
           "name": "AssertionError [ERR_ASSERTION]",
@@ -130,14 +145,17 @@ describe('reporter - no hierarchy mode', function() {
     assert.deepEqual(passes, [
       {
         "title": "test pass",
+        "result": "passed",
         "err": {}
       },
       {
         "title": "nested test pass",
+        "result": "passed",
         "err": {}
       },
       {
         "title": "suite2 pass",
+        "result": "passed",
         "err": {}
       }
     ])
