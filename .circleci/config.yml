@@ -20,6 +20,7 @@ jobs:
             npm install
             set +e
             npm run sample-test
+            npm run sample-test-hierarchy
             npm test
 workflows:
   version: 2
