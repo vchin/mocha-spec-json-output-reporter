@@ -50,7 +50,7 @@ describe('reporter - hierarchy mode', function() {
             "title": "test fail",
             "result": "failed",
             "err": {
-              "stack": "AssertionError [ERR_ASSERTION]: null == true\n    at Context.it (test\\sample-test.js:7:32)",
+              "stack": `AssertionError [ERR_ASSERTION]: null == true\n    at Context.it (${path.join('test','sample-test.js')}:7:32)`,
               "message": "null == true",
               "generatedMessage": true,
               "name": "AssertionError [ERR_ASSERTION]",
