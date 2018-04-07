@@ -19,11 +19,11 @@ describe('reporter - hierarchy mode', function() {
     delete stats.end;
     delete stats.duration;
     assert.deepEqual(stats, {
-      "suites": 3,
-      "tests": 6,
-      "passes": 3,
+      "suites": 4,
+      "tests": 7,
+      "passes": 4,
       "pending": 1,
-      "failures": 2
+      "failures": 2,
     });
     const removeDurations = suite => {
       if (suite.suites && suite.suites.length > 0) {
@@ -50,7 +50,7 @@ describe('reporter - hierarchy mode', function() {
             "title": "test fail",
             "result": "failed",
             "err": {
-              "stack": `AssertionError [ERR_ASSERTION]: null == true\n    at Context.it (${path.join('test','sample-test.js')}:7:32)`,
+              "stack": "AssertionError [ERR_ASSERTION]: null == true\n    at Context.it (test\\sample-test.js:7:32)",
               "message": "null == true",
               "generatedMessage": true,
               "name": "AssertionError [ERR_ASSERTION]",
@@ -88,6 +88,17 @@ describe('reporter - hierarchy mode', function() {
                   "expected": true,
                   "operator": "=="
                 }
+              }
+            ],
+            "suites": []
+          },
+          {
+            "title": "nested describe 2",
+            "tests": [
+              {
+                "title": "nested d2 test",
+                "result": "passed",
+                "err": {}
               }
             ],
             "suites": []
@@ -158,6 +169,11 @@ describe('reporter - hierarchy mode', function() {
       },
       {
         "title": "nested test pass",
+        "result": "passed",
+        "err": {}
+      },
+      {
+        "title": "nested d2 test",
         "result": "passed",
         "err": {}
       },
