@@ -19,11 +19,11 @@ describe('reporter - no hierarchy mode', function() {
     delete stats.end;
     delete stats.duration;
     assert.deepEqual(stats, {
-      "suites": 3,
-      "tests": 6,
-      "passes": 3,
+      "suites": 4,
+      "tests": 7,
+      "passes": 4,
       "pending": 1,
-      "failures": 2
+      "failures": 2,
     });
     const suites = contents.suites.map(s => {
       return Object.assign(s, {
@@ -84,6 +84,16 @@ describe('reporter - no hierarchy mode', function() {
               "expected": true,
               "operator": "=="
             }
+          }
+        ]
+      },
+      {
+        "title": "nested describe 2",
+        "tests": [
+          {
+            "title": "nested d2 test",
+            "result": "passed",
+            "err": {}
           }
         ]
       },
@@ -150,6 +160,11 @@ describe('reporter - no hierarchy mode', function() {
       },
       {
         "title": "nested test pass",
+        "result": "passed",
+        "err": {}
+      },
+      {
+        "title": "nested d2 test",
         "result": "passed",
         "err": {}
       },

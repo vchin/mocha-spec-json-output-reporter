@@ -10,6 +10,9 @@ describe('suite 1', function() {
     it('nested test pass', () => null);
     it('nested test fail', () => assert.ok(null));
   });
+  describe('nested describe 2', () => {
+    it('nested d2 test', () => null);
+  });
 });
 
 describe('suite 2', function() {

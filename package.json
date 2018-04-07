@@ -4,6 +4,7 @@
   "scripts": {
     "sample-test": "mocha test/sample-test.js -R mocha-spec-json-output-reporter --reporter-options fileName=mocha-output.json",
     "sample-test-hierarchy": "mocha test/sample-test.js -R mocha-spec-json-output-reporter --reporter-options fileName=mocha-output-hierarchy.json,hierarchy=true",
+    "sample-test-all": "mocha test/sample-test*.js -R mocha-spec-json-output-reporter --reporter-options fileName=mocha-output-hierarchy.json,hierarchy=true",
     "test": "mocha test/validate-output*.js",
     "publish": "npm publish lib"
   },
