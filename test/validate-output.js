@@ -38,16 +38,18 @@ describe('reporter - no hierarchy mode', function() {
         "title": "suite 1",
         "tests": [
           {
+            "fullTitle": "suite 1 test pass",
             "title": "test pass",
             "result": "passed",
             "err": {}
           },
           {
+            "fullTitle": "suite 1 test fail",
             "title": "test fail",
             "result": "failed",
             "err": {
-              "stack": `AssertionError [ERR_ASSERTION]: null == true\n    at Context.it (${path.join('test','sample-test.js')}:7:32)`,
-              "message": "null == true",
+              "stack": `AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(null)\n\n    at Context.it (${path.join('test','sample-test.js')}:7:32)`,
+              "message": "The expression evaluated to a falsy value:\n\n  assert.ok(null)\n",
               "generatedMessage": true,
               "name": "AssertionError [ERR_ASSERTION]",
               "code": "ERR_ASSERTION",
@@ -57,6 +59,7 @@ describe('reporter - no hierarchy mode', function() {
             }
           },
           {
+            "fullTitle": "suite 1 skipped test",
             "title": "skipped test",
             "result": "pending",
             "err": {}
@@ -67,16 +70,18 @@ describe('reporter - no hierarchy mode', function() {
         "title": "nested describe",
         "tests": [
           {
+            "fullTitle": "nested describe nested test pass",
             "title": "nested test pass",
             "result": "passed",
             "err": {}
           },
           {
+            "fullTitle": "nested describe nested test fail",
             "title": "nested test fail",
             "result": "failed",
             "err": {
-              "stack": `AssertionError [ERR_ASSERTION]: null == true\n    at Context.it (${path.join('test','sample-test.js')}:11:41)`,
-              "message": "null == true",
+              "stack": `AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(null)\n\n    at Context.it (${path.join('test','sample-test.js')}:11:41)`,
+              "message": "The expression evaluated to a falsy value:\n\n  assert.ok(null)\n",
               "generatedMessage": true,
               "name": "AssertionError [ERR_ASSERTION]",
               "code": "ERR_ASSERTION",
@@ -91,6 +96,7 @@ describe('reporter - no hierarchy mode', function() {
         "title": "nested describe 2",
         "tests": [
           {
+            "fullTitle": "nested describe 2 nested d2 test",
             "title": "nested d2 test",
             "result": "passed",
             "err": {}
@@ -101,6 +107,7 @@ describe('reporter - no hierarchy mode', function() {
         "title": "suite 2",
         "tests": [
           {
+            "fullTitle": "suite 2 suite2 pass",
             "title": "suite2 pass",
             "result": "passed",
             "err": {}
@@ -111,6 +118,7 @@ describe('reporter - no hierarchy mode', function() {
     assert.deepEqual(contents.pending, [{
       "err": {},
       "result": "pending",
+      "fullTitle": "suite 1 skipped test",
       "title": "skipped test"
     }]);
     const failures = contents.failures.map(f => {
@@ -119,11 +127,12 @@ describe('reporter - no hierarchy mode', function() {
     });
     assert.deepEqual(failures, [
       {
+        "fullTitle": "suite 1 test fail",
         "title": "test fail",
         "result": "failed",
         "err": {
-          "stack": `AssertionError [ERR_ASSERTION]: null == true\n    at Context.it (${path.join('test','sample-test.js')}:7:32)`,
-          "message": "null == true",
+          "stack": `AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(null)\n\n    at Context.it (${path.join('test','sample-test.js')}:7:32)`,
+          "message": "The expression evaluated to a falsy value:\n\n  assert.ok(null)\n",
           "generatedMessage": true,
           "name": "AssertionError [ERR_ASSERTION]",
           "code": "ERR_ASSERTION",
@@ -133,11 +142,12 @@ describe('reporter - no hierarchy mode', function() {
         }
       },
       {
+        "fullTitle": "nested describe nested test fail",
         "title": "nested test fail",
         "result": "failed",
         "err": {
-          "stack": `AssertionError [ERR_ASSERTION]: null == true\n    at Context.it (${path.join('test','sample-test.js')}:11:41)`,
-          "message": "null == true",
+          "stack": `AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(null)\n\n    at Context.it (${path.join('test','sample-test.js')}:11:41)`,
+          "message": "The expression evaluated to a falsy value:\n\n  assert.ok(null)\n",
           "generatedMessage": true,
           "name": "AssertionError [ERR_ASSERTION]",
           "code": "ERR_ASSERTION",
@@ -154,21 +164,25 @@ describe('reporter - no hierarchy mode', function() {
     });;
     assert.deepEqual(passes, [
       {
+        "fullTitle": "suite 1 test pass",
         "title": "test pass",
         "result": "passed",
         "err": {}
       },
       {
+        "fullTitle": "nested describe nested test pass",
         "title": "nested test pass",
         "result": "passed",
         "err": {}
       },
       {
+        "fullTitle": "nested describe 2 nested d2 test",
         "title": "nested d2 test",
         "result": "passed",
         "err": {}
       },
       {
+        "fullTitle": "suite 2 suite2 pass",
         "title": "suite2 pass",
         "result": "passed",
         "err": {}
